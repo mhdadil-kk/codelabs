@@ -1,0 +1,5 @@
+{
+  "name": "CodeLab",
+  "description": "An intelligent, split-screen coding environment with an AI tutor, real-time code simulation, and gamified learning paths.",
+  "requestFramePermissions": []
+}
