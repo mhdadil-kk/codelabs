@@ -8,7 +8,7 @@ interface LandingPageProps {
 
 export default function LandingPage({ onStart, onViewDocs }: LandingPageProps) {
     return (
-        <div className="h-screen w-full bg-[#0C0C0C] text-white font-sans selection:bg-blue-500/30 overflow-y-auto overflow-x-hidden">
+        <div className="h-screen w-full bg-[#0C0C0C] text-white font-sans selection:bg-purple-500/30 overflow-y-auto overflow-x-hidden">
             {/* Background Gradients */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px]" />
@@ -18,7 +18,7 @@ export default function LandingPage({ onStart, onViewDocs }: LandingPageProps) {
             {/* Header */}
             <header className="relative z-10 flex items-center justify-between px-4 sm:px-6 py-6 max-w-7xl mx-auto">
                 <div className="flex items-center gap-3">
-                    <img src="/logo.png" alt="CodeLab" className="h-12 sm:h-14 md:h-16 object-contain" />
+                    <img src="/logo.png" alt="Codvora" className="h-10 sm:h-11 md:h-12 object-contain" />
                 </div>
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
                     <a href="#features" className="hover:text-white transition-colors">Features</a>
@@ -35,7 +35,7 @@ export default function LandingPage({ onStart, onViewDocs }: LandingPageProps) {
             {/* Hero Section */}
             <main className="relative z-10 pt-10 sm:pt-20 pb-16 sm:pb-32 px-4 sm:px-6">
                 <div className="max-w-5xl mx-auto text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-6 sm:mb-8 animate-fade-in">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-medium mb-6 sm:mb-8 animate-fade-in">
                         <Sparkles className="w-3 h-3" />
                         <span>Powered by Gemini 2.0 Flash</span>
                     </div>
@@ -52,7 +52,7 @@ export default function LandingPage({ onStart, onViewDocs }: LandingPageProps) {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
                         <button
                             onClick={onStart}
-                            className="w-full sm:w-auto group relative px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-semibold text-base sm:text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)]"
+                            className="w-full sm:w-auto group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-full font-semibold text-base sm:text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)]"
                         >
                             <span className="flex items-center justify-center gap-2">
                                 Start Coding Now
@@ -102,8 +102,8 @@ export default function LandingPage({ onStart, onViewDocs }: LandingPageProps) {
             <footer className="relative z-10 border-t border-[#222] py-8 sm:py-12 px-4 sm:px-6 bg-[#0C0C0C]">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-sm text-gray-500">
                     <div className="flex items-center gap-2">
-                        <img src="/logo.png" alt="CodeLab" className="h-6 opacity-50 grayscale" />
-                        <span>© 2025 CodeLab Inc.</span>
+                        <img src="/logo.png" alt="Codvora" className="h-8 object-contain" />
+                        <span>© 2025 Codvora.</span>
                     </div>
                     <div className="flex gap-4 sm:gap-6">
                         <a href="#" className="hover:text-white transition-colors">Privacy</a>

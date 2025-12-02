@@ -7,7 +7,7 @@ interface DocumentationProps {
 
 export default function Documentation({ onBack }: DocumentationProps) {
     return (
-        <div className="h-screen w-full bg-[#0C0C0C] text-gray-300 font-sans selection:bg-blue-500/30 overflow-y-auto overflow-x-hidden">
+        <div className="h-screen w-full bg-[#0C0C0C] text-gray-300 font-sans selection:bg-purple-500/30 overflow-y-auto overflow-x-hidden">
             {/* Header */}
             <header className="sticky top-0 z-50 border-b border-[#222] bg-[#0C0C0C]/95 backdrop-blur-md">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -22,7 +22,7 @@ export default function Documentation({ onBack }: DocumentationProps) {
                         <span className="font-semibold text-white text-sm sm:text-base">Documentation</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <img src="/logo.png" alt="CodeLab" className="h-12 sm:h-14 md:h-16 object-contain" />
+                        <img src="/logo.png" alt="Codvora" className="h-10 sm:h-11 md:h-12 object-contain" />
                     </div>
                 </div>
             </header>
@@ -52,11 +52,8 @@ export default function Documentation({ onBack }: DocumentationProps) {
                     {/* Content */}
                     <div className="space-y-12 sm:space-y-16">
                         <section id="introduction" className="space-y-4 sm:space-y-6">
-                            <h1 className="text-3xl sm:text-4xl font-bold text-white">Introduction</h1>
-                            <p className="text-base sm:text-lg leading-relaxed">
-                                Welcome to <strong className="text-white">CodeLab</strong>, the nextgeneration coding environment designed to accelerate your learning and development workflow.
-                                CodeLab combines a powerful Monaco-based editor with an intelligent AI Architect powered by Gemini 2.0 Flash.
-                            </p>
+                            <h1 className="text-3xl sm:text-4xl font-bold text-white">Codvora Documentation</h1>
+                            <p className="text-gray-400 text-base sm:text-lg">Master coding with AI-powered guidance. Codvora combines a powerful multi-language editor with an intelligent AI companion.</p>
                             <div className="p-4 sm:p-6 rounded-xl bg-[#1E1F20] border border-[#333]">
                                 <h4 className="text-white font-medium mb-2 flex items-center gap-2">
                                     <Sparkles className="w-4 h-4 text-yellow-400" />
@@ -200,7 +197,7 @@ export default function Documentation({ onBack }: DocumentationProps) {
                         </section>
                     </div>
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }

@@ -766,7 +766,7 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
 
   const clearChat = () => {
     if (window.confirm("Are you sure you want to clear the chat history?")) {
-      const initMsg: ChatMessage[] = [{ id: 'init', role: 'model', text: "Welcome to **CodeLab**. \n\nI am your CodeLab companion. How can I assist you in your engineering journey today?" }];
+      const initMsg: ChatMessage[] = [{ id: 'init', role: 'model', text: "Welcome to **Codvora**. \n\nI am your Codvora companion. How can I assist you in your engineering journey today?" }];
       setChatHistory(initMsg);
     }
   };
@@ -1136,7 +1136,7 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
       <div className="h-16 sm:h-20 border-b border-[#333] flex items-center justify-between px-3 sm:px-6 bg-[#131314] shrink-0 z-10 shadow-sm">
         <div className="flex items-center gap-2 sm:gap-3">
           <button onClick={() => navigate('/')} className="cursor-pointer hover:opacity-80 transition-opacity">
-            <img src="/logo.png" alt="CodeLab" className="h-12 sm:h-14 md:h-16 object-contain" />
+            <img src="/logo.png" alt="Codvora" className="h-10 sm:h-11 md:h-12 object-contain" />
           </button>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
@@ -1256,7 +1256,7 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
             id="run-button"
             onClick={runCode}
             disabled={isRunning}
-            className="flex items-center gap-1 sm:gap-2 bg-[#4285F4] hover:bg-[#3b77db] text-white px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg hover:shadow-blue-900/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-1 sm:gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg hover:shadow-purple-900/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isRunning ? <Loader2 className="w-3 h-3 sm:w-4 sm:h-4 animate-spin" /> : <Play className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />}
             <span className="hidden sm:inline">Run</span>
@@ -1278,10 +1278,10 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
         {/* Vertical Resizer */}
         <div
           id="vertical-resizer"
-          className="h-4 -mt-2 -mb-2 bg-transparent hover:bg-[#4285F4]/50 cursor-row-resize flex items-center justify-center transition-colors z-[9999] relative group shrink-0"
+          className="h-4 -mt-2 -mb-2 bg-transparent hover:bg-purple-600/50 cursor-row-resize flex items-center justify-center transition-colors z-[9999] relative group shrink-0"
           onMouseDown={(e) => startResizing(e, 'vertical')}
         >
-          <div className="h-0.5 w-full bg-[#333] group-hover:bg-[#4285F4] transition-colors pointer-events-none" />
+          <div className="h-0.5 w-full bg-[#333] group-hover:bg-purple-500 transition-colors pointer-events-none" />
           <GripHorizontal className="absolute w-6 h-6 text-gray-500 group-hover:text-white bg-[#1E1E1E] rounded-full p-1 pointer-events-none shadow-lg border border-[#333]" />
         </div>
 
@@ -1336,9 +1336,9 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
                     key={id}
                     onClick={() => { setQuizDifficulty(id); setHasSelectedDifficulty(true); }}
                     className={`w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors ${quizDifficulty === id
-                      ? 'bg-blue-500 text-white'
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
                       : 'bg-[#1E1E1E] text-gray-300 hover:bg-[#333]'
-                    }`}
+                      }`}
                   >
                     {id.charAt(0).toUpperCase() + id.slice(1)}
                   </button>
@@ -1352,9 +1352,9 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
                   setIsGeneratingQuiz(false);
                 }}
                 className={`mt-4 w-full px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${hasSelectedDifficulty && !isGeneratingQuiz
-                  ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white'
                   : 'bg-[#1E1E1E] text-gray-500 border border-[#333] cursor-not-allowed'
-                }`}
+                  }`}
               >
                 {isGeneratingQuiz ? 'Preparing…' : `Start ${quizDifficulty.charAt(0).toUpperCase() + quizDifficulty.slice(1)} Quiz`}
               </button>
@@ -1552,10 +1552,10 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
         {/* Resizer Handle */}
         <div
           id="horizontal-resizer"
-          className="w-4 -ml-2 -mr-2 h-full bg-transparent hover:bg-[#4285F4]/50 cursor-col-resize z-[9999] flex flex-col justify-center items-center group transition-colors relative shrink-0"
+          className="w-4 -ml-2 -mr-2 h-full bg-transparent hover:bg-purple-600/50 cursor-col-resize z-[9999] flex flex-col justify-center items-center group transition-colors relative shrink-0"
           onMouseDown={(e) => startResizing(e, 'horizontal')}
         >
-          <div className="w-0.5 h-full bg-[#333] group-hover:bg-[#4285F4] transition-colors pointer-events-none" />
+          <div className="w-0.5 h-full bg-[#333] group-hover:bg-purple-500 transition-colors pointer-events-none" />
           <div className="absolute w-1 h-8 bg-[#444] group-hover:bg-[#888] rounded-full transition-colors pointer-events-none" />
         </div>
 
