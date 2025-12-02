@@ -576,6 +576,16 @@ function CodeEditor({ initialLanguage, navigate }: { initialLanguage: Language, 
   const [reactSrcDoc, setReactSrcDoc] = useState<string>('');
   const [renderKey, setRenderKey] = useState(0);
 
+  // Update Document Title for SEO
+  useEffect(() => {
+    if (language) {
+      const langName = language.charAt(0).toUpperCase() + language.slice(1);
+      document.title = `${langName} Online Compiler - Codvora AI`;
+    } else {
+      document.title = "Codvora - AI-Powered Online Compiler";
+    }
+  }, [language]);
+
   // Sync language with URL parameter changes
   useEffect(() => {
     if (initialLanguage !== language) {
