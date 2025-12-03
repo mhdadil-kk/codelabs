@@ -203,13 +203,17 @@ const MonacoEditor = React.memo(({
           }
         });
 
-        // Debounced change handler
+        // Immediate change handler for smooth typing
         editorRef.current.onDidChangeModelContent(() => {
           const newVal = editorRef.current.getValue();
+          isTypingRef.current = true;
+          onChange(newVal);
+
+          // Clear typing flag after user stops typing
           if (debounceRef.current) clearTimeout(debounceRef.current);
           debounceRef.current = setTimeout(() => {
-            onChange(newVal);
-          }, 100);
+            isTypingRef.current = false;
+          }, 300);
         });
 
         // CRITICAL FIX: Force layout updates to handle container resizing during route transitions
@@ -268,7 +272,10 @@ const MonacoEditor = React.memo(({
     return () => resizeObserver.disconnect();
   }, []); // Run once to attach observer
 
-  // Combined Language + Code Update (Atomic to prevent flicker)
+  const isTypingRef = useRef(false);
+  const lastCodeRef = useRef(code);
+
+  // Update language only (don't interfere with typing)
   useEffect(() => {
     if (editorRef.current && window.monaco) {
       const monacoLang = language === 'react' ? 'javascript' :
@@ -276,29 +283,29 @@ const MonacoEditor = React.memo(({
           language === 'mongodb' ? 'javascript' :
             language;
 
+      const model = editorRef.current.getModel();
+      if (model) {
+        window.monaco.editor.setModelLanguage(model, monacoLang);
+      }
+    }
+  }, [language]); // Only run when language changes
+
+  // Handle external code updates (e.g., from language switching)
+  useEffect(() => {
+    if (editorRef.current && !isTypingRef.current) {
       const currentValue = editorRef.current.getValue();
 
-      // Only update if code actually changed
-      if (code !== currentValue) {
-        // Create new model with correct language - this is atomic and prevents flicker
-        const oldModel = editorRef.current.getModel();
-        const newModel = window.monaco.editor.createModel(code, monacoLang);
-
-        editorRef.current.setModel(newModel);
-
-        // Dispose old model to free memory
-        if (oldModel) {
-          oldModel.dispose();
-        }
-      } else {
-        // Just update language if code is the same
-        const model = editorRef.current.getModel();
-        if (model) {
-          window.monaco.editor.setModelLanguage(model, monacoLang);
+      // Only update if code changed externally (not from user typing)
+      if (code !== currentValue && code !== lastCodeRef.current) {
+        const position = editorRef.current.getPosition();
+        editorRef.current.setValue(code);
+        if (position) {
+          editorRef.current.setPosition(position);
         }
       }
     }
-  }, [language, code]);
+    lastCodeRef.current = code;
+  }, [code]);
 
   return <div ref={containerRef} className="w-full h-full bg-[#1E1E1E] overflow-hidden" />;
 });
